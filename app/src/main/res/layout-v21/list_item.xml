@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sixDp"
+        card_view:cardCornerRadius="@dimen/sixDp"
+        card_view:contentPadding="@dimen/sixteenDp">
+        <!--Story Image View-->
+        <ImageView
+            android:id="@+id/story_thumb"
+            android:layout_width="@dimen/storyImageSize"
+            android:layout_height="@dimen/storyImageSize"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/twentyDp"
+            android:contentDescription="@string/story_image_thumbnail"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+        <!--Start Story Section, date, time Text Vs-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--Story section name TV-->
+            <TextView
+                android:id="@+id/sectionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchTextAppearance="@style/sectionName"
+                tools:text="Business" />
+            <!--Story Date TV-->
+            <TextView
+                android:id="@+id/dateTv"
+                style="@style/storyDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/tenDp"
+                tools:text="2018-05-29" />
+            <!--Story Time TV-->
+            <TextView
+                android:id="@+id/timeTv"
+                style="@style/storyTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/tenDp"
+                tools:text="11:57" />
+            <!--End Story Section, date, time Text Vs-->
+        </LinearLayout>
+        <!--Start Story Text Vs-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/storyTextMargin"
+            android:layout_marginTop="@dimen/twentyDp"
+            android:orientation="vertical">
+            <!--Story Head Line TV-->
+            <TextView
+                android:id="@+id/headline"
+                style="@style/StoryHeadLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/story_headline_demo" />
+            <!--Story Trail Text TV-->
+            <TextView
+                android:id="@+id/trailText"
+                style="@style/trailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sixDp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                tools:text="@string/trial_text_demo" />
+            <!--Story Short URL TV-->
+            <TextView
+                android:id="@+id/shortUrl"
+                style="@style/storyShortUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sixDp"
+                tools:text="https://gu.com/p/8y74g" />
+            <!--End Story Text Vs-->
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

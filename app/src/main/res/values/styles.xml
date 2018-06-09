@@ -1,0 +1,43 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--Story Headline-->
+    <style name="StoryHeadLine">
+        <item name="android:textSize">@dimen/twentySp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!--Story Section Name-->
+    <style name="sectionName">
+        <item name="android:textSize">@dimen/fourteenSp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <!--Story Date-->
+    <style name="storyDate">
+        <item name="android:textSize">@dimen/twelveSp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/date</item>
+    </style>
+    <!--Story Time-->
+    <style name="storyTime">
+        <item name="android:textSize">@dimen/twelveSp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/time</item>
+    </style>
+    <!--Story Trail Text-->
+    <style name="trailText">
+        <item name="android:textSize">@dimen/sixteenSp</item>
+        <item name="android:textColor">@color/accent_device_default_light</item>
+    </style>
+    <!--Story Short URL-->
+    <style name="storyShortUrl">
+        <item name="android:textSize">@dimen/twelveSp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/shortUrl</item>
+    </style>
+</resources>
