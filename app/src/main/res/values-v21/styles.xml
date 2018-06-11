@@ -13,9 +13,9 @@
         <item name="android:textStyle">bold</item>
     </style>
     <!--Story Section Name-->
-    <style name="SwitchTextAppearance" parent="@android:style/TextAppearance.Holo.Small">
+    <style name="sectionName">
         <item name="android:textSize">@dimen/fourteenSp</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <!--Story Date-->
     <style name="storyDate">
@@ -37,7 +37,7 @@
     <!--Story Short URL-->
     <style name="storyShortUrl">
         <item name="android:textSize">@dimen/twelveSp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">italic</item>
         <item name="android:textColor">@color/shortUrl</item>
     </style>
 </resources>

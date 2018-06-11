@@ -10,17 +10,17 @@
     <color name="time">#8D6E63</color>
     <color name="sectionName">#827717</color>
 
-    <color name="business">#1A237E</color>
+    <color name="business">#a4930d</color>
     <color name="ukNews">#D32F2F</color>
-    <color name="politics">#FFA000</color>
-    <color name="news">#000000</color>
-    <color name="opinion">#512DA8</color>
-    <color name="education">#F06292</color>
+    <color name="politics">#6536b1</color>
+    <color name="news">#ff0000</color>
+    <color name="opinion">#654d9f</color>
+    <color name="education">#5ea8c1</color>
     <color name="media">#F14699</color>
-    <color name="worldNews">#0091EA</color>
+    <color name="worldNews">#9e3074</color>
     <color name="science">#3F51B5</color>
     <color name="globalDevelopment">#388E3C</color>
-    <color name="higherEducationNetwork">#F44336</color>
+    <color name="higherEducationNetwork">#afc111</color>
 
 
     <color name="primary_device_default_dark">#8398b4</color>

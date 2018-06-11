@@ -18,7 +18,7 @@
             android:layout_width="@dimen/storyImageSize"
             android:layout_height="@dimen/storyImageSize"
             android:layout_gravity="end"
-            android:layout_marginTop="@dimen/twentyDp"
+            android:layout_marginTop="@dimen/thirtyFiveDp"
             android:contentDescription="@string/story_image_thumbnail"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher" />
@@ -60,7 +60,7 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/storyTextMargin"
             android:layout_marginRight="@dimen/storyTextMargin"
-            android:layout_marginTop="@dimen/twentyDp"
+            android:layout_marginTop="@dimen/thirtyFiveDp"
             android:orientation="vertical">
             <!--Story Head Line TV-->
             <TextView

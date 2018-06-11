@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -81,11 +80,9 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 
         ////// TRIAL TXT WEB SYNTAX SPLIT //////
         String originalTrialTextValue = currentStory.getTrailText();
-        String webSyntax;
         String trialText;
         if (originalTrialTextValue.contains(TRIAL_TEXT_SYNTAX1)) {
             String[] parts = originalTrialTextValue.split(TRIAL_TEXT_SYNTAX1);
-            webSyntax = parts[0];
             trialText = parts[1];
         } else {
             trialText = originalTrialTextValue;
@@ -115,37 +112,37 @@ public class StoryAdapter extends ArrayAdapter<Story> {
         int storySectionNameColorRID;
         switch (sectionName) {
             case "":
-            case "business":
+            case "Business":
                 storySectionNameColorRID = R.color.business;
                 break;
-            case "ukNews":
+            case "UK news":
                 storySectionNameColorRID = R.color.ukNews;
                 break;
-            case "politics":
+            case "Politics":
                 storySectionNameColorRID = R.color.politics;
                 break;
-            case "news":
+            case "News":
                 storySectionNameColorRID = R.color.news;
                 break;
-            case "opinion":
+            case "Opinion":
                 storySectionNameColorRID = R.color.opinion;
                 break;
-            case "education":
+            case "Education":
                 storySectionNameColorRID = R.color.education;
                 break;
-            case "media":
+            case "Media":
                 storySectionNameColorRID = R.color.media;
                 break;
-            case "worldNews":
+            case "WorldNews":
                 storySectionNameColorRID = R.color.worldNews;
                 break;
-            case "science":
+            case "Science":
                 storySectionNameColorRID = R.color.science;
                 break;
-            case "globalDevelopment":
+            case "Global development":
                 storySectionNameColorRID = R.color.globalDevelopment;
                 break;
-            case "higherEducationNetwork":
+            case "Higher Education Network":
                 storySectionNameColorRID = R.color.higherEducationNetwork;
                 break;
             default:
