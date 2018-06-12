@@ -9,9 +9,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +28,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Story>> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Story>>, SwipeRefreshLayout.OnRefreshListener {
     public static final String LOG_TAG = MainActivity.class.getName();
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL for story data from the Guardian data set
      */
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?q=debate%20AND%20(economy%20OR%20immigration%20education)&tag=politics/politics&from-date=2018-01-01&to-date=2018-06-01&page-size=100&show-fields=trailText,headline,thumbnail,shortUrl&api-key=test";
+            "https://content.guardianapis.com/search?q=debate%20AND%20(economy%20OR%20immigration%20education)&tag=politics/politics&from-date=2018-01-01&to-date=2018-06-01&page-size=100&show-tags=contributor&show-fields=trailText,headline,thumbnail,shortUrl&api-key=test";
     /**
      * Adapter for the list of stories
      */
@@ -48,12 +50,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private TextView mEmptyStateTextView;
     // Progress bar object
     private ProgressBar mProgressBar;
+    // SwipeRefreshLayout
+    private SwipeRefreshLayout swipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.tool_bar_top_view);
+        // Find the Swipe layout
+        swipeLayout = findViewById(R.id.swipe_container);
+        // Setting the Swipe layout setOnRefreshListener
+        swipeLayout.setOnRefreshListener(this);
+        // Setting the colors of the Swipe layout while refreshing
+        swipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -201,5 +215,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
+    }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(false);
+            }
+        }, 5000);
     }
 }

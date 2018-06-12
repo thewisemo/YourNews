@@ -79,6 +79,15 @@
                 android:ellipsize="end"
                 android:maxLines="3"
                 tools:text="@string/trial_text_demo" />
+            <!--Story Author TV-->
+            <TextView
+                android:id="@+id/author"
+                style="@style/storyAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sixDp"
+                tools:text="By: Richard Partington" />
+
             <!--Story Short URL TV-->
             <TextView
                 android:id="@+id/shortUrl"

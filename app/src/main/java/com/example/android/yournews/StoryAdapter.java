@@ -1,5 +1,6 @@
 package com.example.android.yournews;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -37,6 +38,7 @@ public class StoryAdapter extends ArrayAdapter<Story> {
      * @param parent      The parent ViewGroup that is used for inflation.
      * @return The View for the position in the AdapterView.
      */
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -74,6 +76,11 @@ public class StoryAdapter extends ArrayAdapter<Story> {
         dateTv.setText(date);
         TextView timeTv = listItemView.findViewById(R.id.timeTv);
         timeTv.setText(time);
+
+        // Find the TextView in the list_item.xml layout with the ID author
+        TextView author = listItemView.findViewById(R.id.author);
+        author.setText(currentStory.getAuthor());
+
         // Find the TextView in the list_item.xml layout with the ID headline
         TextView headlineTextView = listItemView.findViewById(R.id.headline);
         headlineTextView.setText(currentStory.getHeadline());

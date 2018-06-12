@@ -25,6 +25,9 @@ public final class QueryUtils {
 
     // Tag for the log messages
     public static final String LOG_TAG = QueryUtils.class.getSimpleName();
+    // ConnectTimeout & ReadTimeout in milliseconds static variables
+    private static final int CONNECT_TIMEOUT = 15000;
+    private static final int READ_TIMEOUT = 10000;
 
     /**
      * Create a private constructor because no one should ever create a {@link QueryUtils} object.
@@ -93,8 +96,8 @@ public final class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(READ_TIMEOUT /* milliseconds */);
+            urlConnection.setConnectTimeout(CONNECT_TIMEOUT /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
@@ -194,9 +197,19 @@ public final class QueryUtils {
                 // Extract the value for the key called "thumbnail"
                 String thumbnailUrl = properties.getString("thumbnail");
 
+                // Required by the project reviewer from Udacity.
+                // For a given earthquake, extract the JSONObject associated with the
+                // key called "properties", which represents a list of all properties
+                // for that earthquake.
+                JSONArray tagsArray = currentStory.getJSONArray("tags");
+                String author = "Author name not found";
+                if (tagsArray != null && tagsArray.length() > 0)
+                    //if the author found ,parse it
+                    author = "By: " + tagsArray.getJSONObject(0).getString("webTitle");
+
                 // Create a new {@link Story} object with the: Section name, Date, Time, Headline, Trial text, Short URL
                 // and url from the JSON response.
-                Story story = new Story(sectionName, date, headline, trailText, shortUrl, thumbnailUrl);
+                Story story = new Story(sectionName, date, author, headline, trailText, shortUrl, thumbnailUrl);
 
                 // Add the new {@link Story} to the list of stories.
                 stories.add(story);

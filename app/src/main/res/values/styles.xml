@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -28,6 +29,12 @@
         <item name="android:textSize">@dimen/twelveSp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/time</item>
+    </style>
+    <!--Story Author-->
+    <style name="storyAuthor">
+        <item name="android:textSize">@dimen/twelveSp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/holo_red_dark</item>
     </style>
     <!--Story Trail Text-->
     <style name="trailText">

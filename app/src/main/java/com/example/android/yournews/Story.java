@@ -9,6 +9,7 @@ package com.example.android.yournews;
  * with these fields:
  * Section name
  * publishing date "with exact time"
+ * author
  * story headline
  * trail text for the story
  * short URL for the story on the guardian website
@@ -18,14 +19,16 @@ package com.example.android.yournews;
 public class Story {
     private String mSectionName;
     private String mDate;
+    private String mAuthor;
     private String mHeadline;
     private String mTrailText;
     private String mShortUrl;
     private String mThumbnailUrl;
 
-    public Story(String sectionName, String date, String headline, String trailText, String shortUrl, String thumbnailUrl) {
+    public Story(String sectionName, String date, String author, String headline, String trailText, String shortUrl, String thumbnailUrl) {
         mSectionName = sectionName;
         mDate = date;
+        mAuthor = author;
         mHeadline = headline;
         mTrailText = trailText;
         mShortUrl = shortUrl;
@@ -38,6 +41,10 @@ public class Story {
 
     public String getDate() {
         return mDate;
+    }
+
+    public String getAuthor() {
+        return mAuthor;
     }
 
     public String getHeadline() {
