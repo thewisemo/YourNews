@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="settings_view_by_labels">
+        <item>@string/business_label</item>
+        <item>@string/ukNews_label</item>
+        <item>@string/politics_label</item>
+        <item>@string/news_label</item>
+        <item>@string/opinion_label</item>
+        <item>@string/education_label</item>
+        <item>@string/media_label</item>
+        <item>@string/worldNews_label</item>
+        <item>@string/science_label</item>
+        <item>@string/globalDevelopment_label</item>
+        <item>@string/higherEducationNetwork_label</item>
+    </string-array>
+
+    <string-array name="settings_view_by_values">
+        <item>@string/business_value</item>
+        <item>@string/ukNews_value</item>
+        <item>@string/politics_value</item>
+        <item>@string/news_value</item>
+        <item>@string/opinion_value</item>
+        <item>@string/education_value</item>
+        <item>@string/media_value</item>
+        <item>@string/worldNews_value</item>
+        <item>@string/science_value</item>
+        <item>@string/globalDevelopment_value</item>
+        <item>@string/higherEducationNetwork_value</item>
+    </string-array>
+
+</resources>

@@ -4,6 +4,7 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -11,6 +12,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -39,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL for story data from the Guardian data set
      */
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?q=debate%20AND%20(economy%20OR%20immigration%20education)&tag=politics/politics&from-date=2018-01-01&to-date=2018-06-01&page-size=100&show-tags=contributor&show-fields=trailText,headline,thumbnail,shortUrl&api-key=test";
+//            "https://content.guardianapis.com/search?q=debate%20AND%20(economy%20OR%20immigration%20education)&tag=politics/politics&from-date=2018-01-01&to-date=2018-06-01&page-size=100&show-tags=contributor&show-fields=trailText,headline,thumbnail,shortUrl&api-key=test";
+            "https://content.guardianapis.com/search";
     /**
      * Adapter for the list of stories
      */
@@ -170,17 +173,48 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 aboutDialog.show();
                 break;
+            // Case Settings button.
+            case R.id.action_settings:
+                // Create an intent to launch the SettingsActivity.class
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                // Start the activity inside the intent
+                startActivity(settingsIntent);
+                break;
             default:
                 break;
         }
         return true;
     }
-    // onCreateLoader method
+
     @Override
+    // onCreateLoader instantiates and returns a new Loader for the given ID
     public Loader<List<Story>> onCreateLoader(int id, Bundle args) {
         Log.d(LOG_TAG, "This is the OnCreateLoader Method");
-        // Create a new loader for the given URL
-        return new StoryLoader(this, GUARDIAN_REQUEST_URL);
+//        // Create a new loader for the given URL
+//        return new StoryLoader(this, GUARDIAN_REQUEST_URL);
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+        String storyTypeToView = sharedPrefs.getString(
+                getString(R.string.settings_view_by_key),
+                getString(R.string.settings_view_by_default));
+
+        // parse breaks apart the URI string that's passed into its parameter
+        Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
+
+        // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameter and its value. For example, the `format=geojson`
+        uriBuilder.appendQueryParameter("q", "debate");
+//        uriBuilder.appendQueryParameter("tag", "politics/politics");
+        uriBuilder.appendQueryParameter("tag", storyTypeToView + "/" + storyTypeToView);
+        uriBuilder.appendQueryParameter("page-size", "100");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("show-fields", "trailText,headline,thumbnail,shortUrl");
+        uriBuilder.appendQueryParameter("api-key", "test");
+
+        // Return the completed uri `https://content.guardianapis.com/search?q=debate%20AND%20(economy%20OR%20immigration%20education)&tag=politics/politics&from-date=2018-01-01&to-date=2018-06-01&page-size=100&show-tags=contributor&show-fields=trailText,headline,thumbnail,shortUrl&api-key=test'
+        return new StoryLoader(this, uriBuilder.toString());
     }
     // onLoadFinished method
     @Override
@@ -205,8 +239,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             // Add the Stories data
             mAdapter.addAll(stories);
         }
-
-
     }
     // onLoaderReset method
     @Override

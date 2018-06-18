@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title">
+
+    <ListPreference
+        android:dialogTitle="Sort stories by"
+        android:entries="@array/settings_view_by_labels"
+        android:entryValues="@array/settings_view_by_values"
+        android:key="key_sort_by"
+        android:summary="Select stories you want to view"
+        android:title="Story Type" />
+
+
+</PreferenceScreen>

@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="@android:color/white"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
             app:layout_scrollFlags="scroll|enterAlways|snap">
             <!--App logo ImageView-->
             <ImageView
